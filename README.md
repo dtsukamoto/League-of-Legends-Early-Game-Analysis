@@ -26,6 +26,7 @@ The first thing that I did was remove rows that didn't have the data that I need
 
 For my hypothesis dataframe, I created 2 new variables`'allkillsat15`,`allassistsat15`, which were created by combining the columns `killsat15`, `opp_killsat15`,`assistsat15`, and `opp_assistsat15`. 
 The dataframe looks like this:
+
 | league   |   allkillsat15 |   allassistsat15 |
 |:---------|---------------:|-----------------:|
 | LCK      |              6 |               10 |
@@ -36,7 +37,8 @@ The dataframe looks like this:
 
 For my prediction dataframe, I also used the columns `'allkillsat15`,`allassistsat15` along with many other columns that will help me in the prediction problem
 This data frame looks like this:
- |   patch |   result |   firstdragon |   firstherald |   firstblood |   firsttower | split   |   csdiffat15 |   killdiffat15 |   assistdiffat15 |
+
+|   patch |   result |   firstdragon |   firstherald |   firstblood |   firsttower | split   |   csdiffat15 |   killdiffat15 |   assistdiffat15 |
 |--------:|---------:|--------------:|--------------:|-------------:|-------------:|:--------|-------------:|---------------:|-----------------:|
 |   12.01 |        0 |             0 |             1 |            1 |            1 | Spring  |          -23 |             -1 |               -8 |
 |   12.01 |        0 |             0 |             1 |            0 |            0 | Spring  |          -22 |             -2 |               -2 |
