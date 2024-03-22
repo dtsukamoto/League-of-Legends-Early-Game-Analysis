@@ -63,7 +63,7 @@ Here we see that our distribution is a positive skew that centers around 7 kills
 
 ## Bivariate Analysis:
 
-In Bivariate Analysis we will analyze the distribution of Kills at 15 minutes across Leagues.
+In Bivariate Analysis we will analyze the distribution of kills at 15 minutes across Leagues.
 
 ### Distribution of Kills at 15 minutes by League
 
@@ -100,7 +100,7 @@ I believe that there is a column in the dataset that is NMAR, which is `dragons 
 I noticed while looking through the data that there were a lot of values missing at the end of the dataset, specifically the data related to 15 or 10 minutes like what we are using.
 I also found that there were a lot of missing values in certain leagues so I wanted to see if this was really true.
 
-So I want to see if the missingness of `killsat15` depends on `league` among tier 1 professional leagues. Below we see the proportions of where the data of `killsat15` are missing in comparison to `league`. We can see that all the missing values are in the LPL, while the LPL also has no non-missing values.
+So I want to see if the missingness of `killsat15` depends on `league` among tier 1 professional leagues. Below we see the proportions of where the data of `killsat15` are missing in comparison to `league`. We can see that all the missing values are in the LPL, while the LPL no values that aren't missing
 
 | league   |   is_missing = False |   is_missing = True |
 |:---------|---------------------:|--------------------:|
@@ -117,7 +117,7 @@ So I want to see if the missingness of `killsat15` depends on `league` among tie
 
 ### Alternative hypothesis: The distribution of the `league` when `killsat15` is missing is different from the distribution of the `league` when `killsat15` is not missing
 
-Below we can see that our observed TVD is much higher than the TVDs we gathered through permutation, so it is reasonable to say that we reject our null hypothesis and say that the missing ness of `killsat15` is MAR since it's missingess is correlated with `league`
+Below we can see that our observed TVD is much higher than the TVDs we gathered through permutation, so it is reasonable to say that we reject our null hypothesis and say that the missingness of `killsat15` is MAR since it's missingess is correlated with `league`
 
 <iframe
   src="assets/empdist5.html"
@@ -174,7 +174,7 @@ My prediction problem is "Can we predict the outcome of a League of Legends game
 
 # Baseline Model
 
-The model that I made uses a RandomForestClassifer to classify with many features. In this model I used the columns `patch`,`firstblood`,`firstdragon`,`firsttower`,`firstherald`,`split`. This model uses 6 ordinal features to deal with all of them, I used OneHotEncoder to make all of them into quantitative features. The accuracy came out to be about 69% which is good because if you compare it to the base data set where you would always say they win, you would come out with an accuracy of about 52%. What we got is 17% higher than that and while it's not the most effective model, it's better than nothing.
+The model that I made uses a RandomForestClassifer to classify with many features. In this model I used the columns `patch`,`firstblood`,`firstdragon`,`firsttower`,`firstherald`,`split`. This model uses 6 ordinal features to deal with all of them, I used OneHotEncoder to make all of them into quantitative features. The accuracy came out to be about 69% which is good because if you compare it to the base dataset where you would always say they win, you would come out with an accuracy of about 52%. The model came out with an accuracy that was 17% higher and while it's not the most effective model, it's better than a constant prediction of win or loss.
 
 # Final Model
 
@@ -205,4 +205,4 @@ Significance level: 0.05.
   frameborder="0"
 ></iframe>
 
-Above, we can see that our p-value isn't below our significance level and so we fail to reject the null hypothesis. This points to the idea that our model achieves accuracy partiy in terms of patches.
+Above, we can see that our p-value isn't below our significance level and so we fail to reject the null hypothesis. This points to the idea that our model achieves accuracy parity in terms of patches.
