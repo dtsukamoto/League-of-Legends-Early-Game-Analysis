@@ -48,7 +48,7 @@ This data frame looks like this:
 
 ## Univariate Analysis:
 
-In Univariate Analysis we will analyze the distribution of Kills at 15 minutes and the distribution of Games by League.
+In Univariate Analysis we will analyze the distribution of Kills at 15 minutes.
 
 ### Distribution of Kills at 15 Minutes
 
@@ -61,21 +61,64 @@ Here we see that our distribution is a positive skew that centers around 7 kills
   frameborder="0"
 ></iframe>
 
-_______
-<iframe
-  src="assets/ladist3.html"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
-_______
+## Bivariate Analysis:
+
+In Bivariate Analysis we will analyze the distribution of Kills at 15 minutes across Leagues.
+
+### Distribution of Kills at 15 minutes by League
+
+Below we can see that VCS league has a box plot that his much higher compared to the other leagues.
+
 <iframe
   src="assets/lkdist4.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
-_______
+
+### Interesting Aggregates
+
+Here we look at the means of each league and we can see that the VCS again has very
+
+| league   |   allkillsat15 |   allassistsat15 |
+|:---------|---------------:|-----------------:|
+| VCS      |       10.4118  |         15.5108  |
+| CBLOL    |        7.42798 |         13.2181  |
+| PCS      |        6.97048 |         12.2472  |
+| LPL      |        6.76845 |         11.388   |
+| LLA      |        6.68984 |         11.5615  |
+| LEC      |        6.19403 |         10.4876  |
+| LCS      |        5.76645 |          9.77303 |
+| LCK      |        5.57173 |          9.71734 |
+
+#Assessment of Missingness
+
+## NMAR
+I believe that there is a column in the dataset that is NMAR, which is `dragons (type unknown)`. This column tends to have missing data, but you cannot infer it's data from other columns so it cannot be missing by design. This column exists for the premise that the data is somwhat missing so it's really the value of the column itself that is the reason for its missingness.
+
+## Missingness Dependency
+I noticed while looking through the data that there were a lot of values missing at the end of the dataset, specifically the data related to 15 or 10 minutes like what we are using.
+I also found that there were a lot of missing values in certain leagues so I wanted to see if this was really true.
+
+So I want to see if the missingness of `killsat15` depends on `league` among tier 1 professional leagues. Below we see the proportions of where the data of `killsat15` are missing in comparison to `league`. We can see that all the missing values are in the LPL, while the LPL also has no non-missing values.
+
+| league   |   is_missing = False |   is_missing = True |
+|:---------|---------------------:|--------------------:|
+| CBLOL    |            0.121743  |                   0 |
+| LCK      |            0.233968  |                   0 |
+| LCS      |            0.152305  |                   0 |
+| LEC      |            0.100701  |                   0 |
+| LLA      |            0.0936874 |                   0 |
+| LPL      |            0         |                   1 |
+| PCS      |            0.135772  |                   0 |
+| VCS      |            0.161824  |                   0 |
+
+### Null hypothesis: The distribution of `league` when `killsat15` is missing is the same as the distribution of the `league` when `killsat15` is not missing 
+
+### Alternative hypothesis: The distribution of the `league` when `killsat15` is missing is different from the distribution of the `league` when `killsat15` is not missing
+
+Below we can see that our observed TVD is much higher than the TVDs we gathered through permutation, so it is reasonable to say that we reject our null hypothesis and say that the missing ness of `killsat15` is MAR since it's missingess is correlated with `league`
+
 <iframe
   src="assets/empdist5.html"
   width="800"
