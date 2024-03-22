@@ -52,7 +52,7 @@ In Univariate Analysis we will analyze the distribution of kills at 15 minutes.
 
 ### Distribution of Kills at 15 Minutes
 
-Here we see that our distribution is a positive skew that centers around 7 kills. This data is pretty surprising since pro players tend to play a slow and safe early game to reduce risky plays.
+Here we see that our distribution is a positive skew that centers around 7 kills. This results are unexpected because pro players tend to play a slow and safe early game to reduce risky plays, which results in a low kill count early game.
 
 <iframe
   src="assets/killdist1.html"
