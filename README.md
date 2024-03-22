@@ -100,7 +100,7 @@ I believe that there is a column in the dataset that is NMAR, which is `dragons 
 I noticed while looking through the data that there were a lot of values missing at the end of the dataset, specifically the data related to 15 or 10 minutes like what we are using.
 I also found that there were a lot of missing values in certain leagues so I wanted to see if this was really true.
 
-So I want to see if the missingness of `killsat15` depends on `league` among tier 1 professional leagues. Below we see the proportions of where the data of `killsat15` are missing in comparison to `league`. We can see that all the missing values are in the LPL, while the LPL no values that aren't missing
+So I want to see if the missingness of `killsat15` depends on `league` among tier 1 professional leagues. Below we see the proportions of where the data of `killsat15` are missing in comparison to `league`. We can see that all the missing values are in the LPL, while the LPL has no values that aren't missing
 
 | league   |   is_missing = False |   is_missing = True |
 |:---------|---------------------:|--------------------:|
