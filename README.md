@@ -20,12 +20,12 @@ The question I wanted to ask was "Among Tier-one professional leagues, which lea
 | `firsttower` | 1 if the team got the first tower, 0 if they didn't |
 | `split` | The part of the season which the game was played|
 
-#Data Cleaning and Exploratory Data Analysis
-The first thing that I did was remove rows that didn't have the data that I needed and replaced them with other rows that already existed. I had to replace the entire row because if I didn't, the data that would replace it would mess up my prediction dataframe which hinged on how each of the features predict an outcome. I also decided that I was going to create 2 different dataframes, 1 for hypothesis testing and the other for prediction. 
+# Data Cleaning and Exploratory Data Analysis
+
+The first thing that I did was remove rows that didn't have the data that I needed and replaced them with other rows that already existed in the dataset. I had to replace the entire row because if I didn't, the data that would replace it would mess up my prediction dataframe which hinged on how each of the features predict an outcome. To get the values I used probabilistic imputation to impute the missing values.  I also decided that I was going to create 2 different dataframes, 1 for hypothesis testing and the other for prediction. 
 
 For my hypothesis dataframe, I created 2 new variables`'allkillsat15`,`allassistsat15`, which were created by combining the columns `killsat15`, `opp_killsat15`,`assistsat15`, and `opp_assistsat15`. 
 The dataframe looks like this:
-```final_h.head()```
 | league   |   allkillsat15 |   allassistsat15 |
 |:---------|---------------:|-----------------:|
 | LCK      |              6 |               10 |
@@ -33,6 +33,19 @@ The dataframe looks like this:
 | LCK      |              9 |               14 |
 | LCK      |              2 |                3 |
 | LCK      |             11 |               18 |
+
+For my prediction dataframe, I also used the columns `'allkillsat15`,`allassistsat15` along with many other columns that will help me in the prediction problem
+This data frame looks like this:
+ |   patch |   result |   firstdragon |   firstherald |   firstblood |   firsttower | split   |   csdiffat15 |   killdiffat15 |   assistdiffat15 |
+|--------:|---------:|--------------:|--------------:|-------------:|-------------:|:--------|-------------:|---------------:|-----------------:|
+|   12.01 |        0 |             0 |             1 |            1 |            1 | Spring  |          -23 |             -1 |               -8 |
+|   12.01 |        0 |             0 |             1 |            0 |            0 | Spring  |          -22 |             -2 |               -2 |
+|   12.01 |        1 |             1 |             0 |            0 |            1 | Spring  |           15 |              2 |                7 |
+|   12.01 |        1 |             1 |             0 |            0 |            1 | Spring  |           15 |              2 |                7 |
+|   12.01 |        0 |             0 |             1 |            1 |            1 | Spring  |          -40 |              2 |                6 |
+
+
+## Univariate Analysis:
 
 <iframe
   src="assets/killdist1.html"
