@@ -126,13 +126,31 @@ Below we can see that our observed TVD is much higher than the TVDs we gathered 
   frameborder="0"
 ></iframe>
 _______
+
+Now we want to see if the `result` of a match has some correlation with the missingness of `killsat15`.
+
+Below we see that the values are pretty balanced, however we see slightly higher values when the team wins the game compared to a loss.
+
+|   result |   is_missing = False |   is_missing = True |
+|---------:|---------------------:|--------------------:|
+|        loss |             0.476954 |            0.450382 |
+|        win |             0.523046 |            0.549618 |
+
+### Null hypothesis: The distribution of `result` when `killsat15` is missing is the same as the distribution of the `league` when `killsat15` is not missing 
+
+### Alternative hypothesis: The distribution of the `result` when `killsat15` is missing is different from the distribution of the `league` when `killsat15` is not missing
+
+In the graph below, we can see that our observed TVD isn't significant, so we would fail to reject our null hypothesis and say that `killsat15` is MCAR because it's missingness is not correlated with `result` 
+
 <iframe
   src="assets/empdist6.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
-_______
+
+# Hypothesis Testing
+
 <iframe
   src="assets/hypo7.html"
   width="800"
