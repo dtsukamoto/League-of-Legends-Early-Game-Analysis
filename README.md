@@ -151,16 +151,54 @@ In the graph below, we can see that our observed TVD isn't significant, so we wo
 
 # Hypothesis Testing
 
+**Null Hypothesis**: Among Tier-one professional leagues, all of them tend to have the same distribution of kills at the 15 minute mark, and the observed differences in our samples are due to random chance.
+
+**Alternate Hypothesis**: Among Tier-one professional leagues, the VCS league tends to have more kills at the 15 minute mark compared to other leagues, on average. The observed difference in our samples cannot be explained by random chance alone.
+
+**Test Statistic**: For our Test statistic, I chose to use difference in group means because our data is numeric and it is directional, this test statistic is the one to use.
+
+**Significance Level**: For our Significance, I chose to use 0.05 since it greatly reduces the chance that our observed outcome is simply due to chance.
+
 <iframe
   src="assets/hypo7.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
-_______
+
+The resulting p-value was 0.0, which leads me to reject our Null Hypothesis since it is below our significance level. Since we reject our null, we also  reject the idea that the distributions of kills at 15 minutes between the VCS and the other tier-one professional leagues are the same. Our data strongly points to the fact that the VCS tends to have more kills at the 15 minute mark compared to the other leagues among tier-one professional leagues.
+
+# Framing a Prediction Problem
+
+My prediction problem is "Can we predict the outcome of a League of Legends game based off information given to us at the 15 minute mark? This problem is a multiclass classification problem. Our model will predict `result` which is the outcome and we will use accuracy to evalute our model since that is all that matters to us. Precision and recall don't mean much since there isn't much gain or loss by maximizing or minimizing either one. All information that we use in the model will be known at the time of prediction which is the 15 minute mark, some things are ambigious like rift herald and dragon, but the first one of each tends to be taken before the 15 minute mark.
+
+# Baseline Model
+
+The model that I made uses a RandomForestClassifer to classify with many features. In this model I used the columns `patch`,`firstblood`,`firstdragon`,`firsttower`,`firstherald`,`split`. This model uses 6 ordinal features to deal with all of them, I used OneHotEncoder to make all of them into quantitative features. The accuracy came out to be about 69% which is good because if you compare it to the base data set where you would always say they win, you would come out with an accuracy of about 52%. What we got is 17% higher than that and while it's not the most effective model, it's better than nothing.
+
+# Final Model
+
+In the final Model I added `csdiffat15`,`assistdiffat15`, and `killdiffat15` which are all good for prediction because they point to how much gold and xp a team has in comparison to the enemy. They are good indicators of the game state and display how good or bad a game is going. `killdiffat15` and `assistdiffat15` were created using already existing columns and combining them to create them.
+
+In this model, I used the RandomForestClassifier since it ended up being more accurate than the DecisionTreeClassifier. The hyperparameters that worked the best were max_depth of 50 and min_samples_split of 3. I found these by using GridSearchCV to determine these hyperparameters. This model had an accuracy of about 78% which was an improvement of about 9%. Since we don't care about precision or recall, this is a pretty nice improvement in terms of accuracy. 
+
+# Fairness Analysis
+
+I wanted to see if the model had different accuracies for different patches, so I decided to do a fairness analysis based on patch. 
+
+Null Hypothesis: The classifier's accuracy is the same for games that are before patch 12.10 and games during and after the patch
+
+Alternative Hypothesis: The classifier's accuracy is higher for games after patch 12.10.
+
+Test statistic: Difference in accuracy (before minus after).
+
+Significance level: 0.05.
+
 <iframe
   src="assets/dist8.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
+
+Above, we can see that our p-value isn't below our significance level and so we fail to reject the null hypothesis. This points to the idea that our model achieves accuracy partiy in terms of patches.
