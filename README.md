@@ -22,7 +22,7 @@ The question I wanted to ask was "Among Tier-one professional leagues, which lea
 
 # Data Cleaning and Exploratory Data Analysis
 
-The first thing that I did was remove rows that didn't have the data that I needed and replaced them with other rows that already existed in the dataset. I had to replace the entire row because if I didn't, the data that would replace it skew the results in my prediction model. To get the values I used probabilistic imputation to impute the missing values.  I also decided that I was going to create 2 different dataframes, 1 for hypothesis testing and the other for prediction. 
+The first thing that I did was remove rows that didn't have the data that I needed and replaced them with other rows that already existed in the dataset. I had to replace the entire row because if I didn't, the data that would replace it could skew the results in my prediction model. To get the values I used probabilistic imputation to impute the missing values.  I also decided that I was going to create 2 different dataframes, 1 for hypothesis testing and the other for prediction. 
 
 For my hypothesis dataframe, I created 2 new variables`'allkillsat15`,`allassistsat15`, which were created by combining the columns `killsat15`, `opp_killsat15`,`assistsat15`, and `opp_assistsat15`. 
 The dataframe looks like this:
