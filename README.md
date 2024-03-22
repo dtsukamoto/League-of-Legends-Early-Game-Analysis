@@ -46,20 +46,16 @@ This data frame looks like this:
 |   12.01 |        1 |             1 |             0 |            0 |            1 | Spring  |           15 |              2 |                7 |
 |   12.01 |        0 |             0 |             1 |            1 |            1 | Spring  |          -40 |              2 |                6 |
 
-
 ## Univariate Analysis:
+
+In Univariate Analysis we will analyze the distribution of Kills at 15 minutes and the distribution of Games by League.
+
+### Distribution of Kills at 15 Minutes
+
+Here we see that our distribution is a positive skew that centers around 7 kills. This data is pretty surprising since pro players tend to play a slow and safe early game to reduce risky plays.
 
 <iframe
   src="assets/killdist1.html"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
-
-________
-
-<iframe
-  src="assets/leaguedist2.html"
   width="800"
   height="600"
   frameborder="0"
