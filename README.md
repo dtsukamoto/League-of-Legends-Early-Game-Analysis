@@ -186,6 +186,10 @@ In this model, I used the RandomForestClassifier since it ended up being more ac
 
 I wanted to see if the model had different accuracies for different patches, so I decided to do a fairness analysis based on patch. 
 
+Group X: Games that take place in patches before patch 12.10
+
+Group Y: Games that take place during or after patch 12.10
+
 Null Hypothesis: The classifier's accuracy is the same for games that are before patch 12.10 and games during and after the patch
 
 Alternative Hypothesis: The classifier's accuracy is higher for games after patch 12.10.
